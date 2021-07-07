@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -29,11 +30,21 @@ func Calculate(x int, y int, e string) int {
 	return ans
 }
 
-func Rpn(s string) {
-	//var stack intStack = make([]int, 0)
+func Rpn(s string) int {
+	var stack intStack = make([]int, 0)
 	a := strings.Fields(s)
-	fmt.Println(a[1])
-	return
+	for i := range a {
+		if strings.Contains("+-*/", a[i]) {
+			y := stack.pop()
+			x := stack.pop()
+			stack.push(Calculate(x, y, a[i]))
+		} else {
+			var num int
+			num, _ = strconv.Atoi(a[i])
+			stack.push(num)
+		}
+	}
+	return stack.pop()
 }
 
 func main() {
@@ -44,5 +55,5 @@ func main() {
 	// stack.push(3)
 	// fmt.Println(stack.pop())
 	// fmt.Println(stack.pop())
-	Rpn("1 2 +")
+	fmt.Println(Rpn("1 2 +"))
 }
