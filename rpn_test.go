@@ -29,3 +29,10 @@ func TestCalculate04(t *testing.T) {
 		t.Error("Test04 is failed")
 	}
 }
+
+func TestRpn01(t *testing.T) {
+	num := rpn("1 1 +")
+	if num != 2 {
+		t.Error("Test05 is failed")
+	}
+}
