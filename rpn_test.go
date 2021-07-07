@@ -23,3 +23,9 @@ func TestCalculate03(t *testing.T) {
 	}
 }
 
+func TestCalculate04(t *testing.T) {
+	num := Calculate(4,3,"*")
+	if num != 12 {
+		t.Error("Test04 is failed")
+	}
+}
