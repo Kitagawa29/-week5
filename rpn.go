@@ -30,16 +30,20 @@ func Calculate(x int, y int, e string) int {
 	return ans
 }
 
+func Frac(x int, y int) string {
+	return strconv.Itoa(x) + "/" + strconv.Itoa(y)
+}
+
 func Rpn(s string) int {
 	var stack intStack = make([]int, 0)
 	a := strings.Fields(s)
+	var num int
 	for i := range a {
 		if strings.Contains("+-*/", a[i]) {
 			y := stack.pop()
 			x := stack.pop()
 			stack.push(Calculate(x, y, a[i]))
 		} else {
-			var num int
 			num, _ = strconv.Atoi(a[i])
 			stack.push(num)
 		}
