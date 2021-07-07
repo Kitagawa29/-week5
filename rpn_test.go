@@ -16,3 +16,10 @@ func TestCalculate02(t *testing.T) {
 	}
 }
 
+func TestCalculate03(t *testing.T) {
+	num := Calculate(4,2,"-")
+	if num != 2 {
+		t.Error("Test03 is failed")
+	}
+}
+
